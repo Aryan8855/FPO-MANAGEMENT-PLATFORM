@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AgriFlow - Digital FPO Management Platform</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+        /* Quick fix for chart containers */
+        .chart-wrapper {
+            height: 220px;
+            position: relative;
+            width: 100%;
+        }
+        .chart-wrapper canvas {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- ======== SIDEBAR ======== -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <i class="fas fa-leaf"></i>
+            <span>AgriFlow</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-item active" data-tab="dashboard">
+                <i class="fas fa-th-large"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="farmers">
+                <i class="fas fa-user-tie"></i>
+                <span>Farmers</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="produce">
+                <i class="fas fa-seedling"></i>
+                <span>Produce</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="inventory">
+                <i class="fas fa-warehouse"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="marketplace">
+                <i class="fas fa-store"></i>
+                <span>Marketplace</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="orders">
+                <i class="fas fa-shopping-cart"></i>
+                <span>Orders</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="logistics">
+                <i class="fas fa-truck"></i>
+                <span>Logistics</span>
+            </a>
+            <a href="#" class="nav-item" data-tab="payments">
+                <i class="fas fa-coins"></i>
+                <span>Payments</span>
+            </a>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <img
+                    src="https://ui-avatars.com/api/?name=FPO+Admin&background=2D6A4F&color=fff"
+                    alt="User"
+                />
+                <div>
+                    <p class="user-name">FPO Admin</p>
+                    <p class="user-role">Digital FPO</p>
+                </div>
+            </div>
+            <button class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ======== MAIN CONTENT ======== -->
+    <main class="main-content">
+        <!-- ===== TOP HEADER ===== -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 id="pageTitle">Dashboard</h1>
+            </div>
+            <div class="header-right">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search..." />
+                </div>
+                <button class="icon-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                <button class="icon-btn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== DASHBOARD TAB ===== -->
+        <section id="tab-dashboard" class="tab-content active">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon green">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Total Farmers</h3>
+                        <p class="stat-number">1,284</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 12%
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="fas fa-boxes"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Inventory Items</h3>
+                        <p class="stat-number">4,392</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 8%
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Orders Today</h3>
+                        <p class="stat-number">47</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 23%
+                        </span>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple">
+                        <i class="fas fa-rupee-sign"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3>Revenue (This Month)</h3>
+                        <p class="stat-number">₹8,42,500</p>
+                        <span class="stat-change positive">
+                            <i class="fas fa-arrow-up"></i> 16%
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="charts-row">
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>📈 Weekly Orders Growth</h3>
+                        <select>
+                            <option>This Week</option>
+                            <option>This Month</option>
+                            <option>This Year</option>
+                        </select>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="ordersChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card">
+                    <div class="chart-header">
+                        <h3>🌾 Top Selling Crops</h3>
+                        <select>
+                            <option>This Month</option>
+                            <option>This Quarter</option>
+                        </select>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="cropsChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <div class="activity-header">
+                    <h3>Recent Transactions</h3>
+                    <a href="#" class="view-all">View All</a>
+                </div>
+                <div class="activity-table-wrapper">
+                    <table class="activity-table">
+                        <thead>
+                            <tr>
+                                <th>Farmer</th>
+                                <th>Produce</th>
+                                <th>Quantity</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentTransactions">
+                            <!-- Filled by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FARMERS TAB ===== -->
+        <section id="tab-farmers" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-user-tie placeholder-icon"></i>
+                <h2>Farmers Management</h2>
+                <p>Register and manage all farmers in your FPO network.</p>
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i> Add New Farmer
+                </button>
+                <div class="placeholder-preview">
+                    <div class="farmer-card">
+                        <img src="https://ui-avatars.com/api/?name=Ramesh+Kumar&background=2D6A4F&color=fff" />
+                        <div>
+                            <h4>Ramesh Kumar</h4>
+                            <p>Wheat • 240 kg • ₹28,000</p>
+                        </div>
+                        <span class="status-badge success">Active</span>
+                    </div>
+                    <div class="farmer-card">
+                        <img src="https://ui-avatars.com/api/?name=Sita+Devi&background=2D6A4F&color=fff" />
+                        <div>
+                            <h4>Sita Devi</h4>
+                            <p>Rice • 180 kg • ₹22,500</p>
+                        </div>
+                        <span class="status-badge success">Active</span>
+                    </div>
+                    <div class="farmer-card">
+                        <img src="https://ui-avatars.com/api/?name=Amit+Sharma&background=2D6A4F&color=fff" />
+                        <div>
+                            <h4>Amit Sharma</h4>
+                            <p>Vegetables • 320 kg • ₹35,200</p>
+                        </div>
+                        <span class="status-badge warning">Pending</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PRODUCE TAB ===== -->
+        <section id="tab-produce" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-seedling placeholder-icon"></i>
+                <h2>Produce Registration</h2>
+                <p>Register crops with quality, quantity, and batch details.</p>
+                <button class="btn-primary">
+                    <i class="fas fa-plus"></i> Register New Produce
+                </button>
+                <div class="produce-grid-preview">
+                    <div class="produce-item">
+                        <span class="produce-icon">🌾</span>
+                        <h4>Wheat</h4>
+                        <p>Grade A • 1,200 kg</p>
+                        <span class="status-badge success">In Stock</span>
+                    </div>
+                    <div class="produce-item">
+                        <span class="produce-icon">🍚</span>
+                        <h4>Rice</h4>
+                        <p>Premium • 850 kg</p>
+                        <span class="status-badge success">In Stock</span>
+                    </div>
+                    <div class="produce-item">
+                        <span class="produce-icon">🍅</span>
+                        <h4>Tomatoes</h4>
+                        <p>Fresh • 420 kg</p>
+                        <span class="status-badge warning">Low Stock</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== INVENTORY TAB ===== -->
+        <section id="tab-inventory" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-warehouse placeholder-icon"></i>
+                <h2>Inventory / Storage</h2>
+                <p>Track batch-level inventory with real-time visibility.</p>
+                <div class="inventory-stats">
+                    <div class="inv-stat">
+                        <span>Total Batches</span>
+                        <strong>48</strong>
+                    </div>
+                    <div class="inv-stat">
+                        <span>Storage Used</span>
+                        <strong>72%</strong>
+                    </div>
+                    <div class="inv-stat">
+                        <span>Expiring Soon</span>
+                        <strong style="color:#e74c3c;">5</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== MARKETPLACE TAB ===== -->
+        <section id="tab-marketplace" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-store placeholder-icon"></i>
+                <h2>Marketplace</h2>
+                <p>Your produce is listed on Amazon & other platforms.</p>
+                <div class="marketplace-preview">
+                    <div class="product-card">
+                        <div class="product-image">🌾</div>
+                        <h4>Organic Wheat</h4>
+                        <p>Grade A • 50 kg bags</p>
+                        <span class="price">₹2,800 / qtl</span>
+                        <button class="btn-small">List on Amazon</button>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image">🍚</div>
+                        <h4>Basmati Rice</h4>
+                        <p>Premium • 25 kg bags</p>
+                        <span class="price">₹6,500 / qtl</span>
+                        <button class="btn-small">List on Amazon</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ORDERS TAB ===== -->
+        <section id="tab-orders" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-shopping-cart placeholder-icon"></i>
+                <h2>Orders</h2>
+                <p>View and manage all buyer orders.</p>
+                <div class="order-list-preview">
+                    <div class="order-item">
+                        <div>
+                            <strong>#ORD-1024</strong>
+                            <p>Basmati Rice • 200 kg</p>
+                        </div>
+                        <span class="status-badge success">Delivered</span>
+                    </div>
+                    <div class="order-item">
+                        <div>
+                            <strong>#ORD-1025</strong>
+                            <p>Wheat • 500 kg</p>
+                        </div>
+                        <span class="status-badge warning">Processing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== LOGISTICS TAB ===== -->
+        <section id="tab-logistics" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-truck placeholder-icon"></i>
+                <h2>Logistics / Delivery</h2>
+                <p>Track deliveries in real-time.</p>
+                <div class="logistics-preview">
+                    <div class="delivery-item">
+                        <i class="fas fa-truck"></i>
+                        <div>
+                            <strong>Delivery #LD-001</strong>
+                            <p>To Mumbai • 2 hrs left</p>
+                        </div>
+                        <span class="status-badge info">In Transit</span>
+                    </div>
+                    <div class="delivery-item">
+                        <i class="fas fa-check-circle" style="color:#2D6A4F;"></i>
+                        <div>
+                            <strong>Delivery #LD-002</strong>
+                            <p>To Pune • Delivered</p>
+                        </div>
+                        <span class="status-badge success">Completed</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== PAYMENTS TAB ===== -->
+        <section id="tab-payments" class="tab-content">
+            <div class="content-placeholder">
+                <i class="fas fa-coins placeholder-icon"></i>
+                <h2>Payments</h2>
+                <p>Transparent farmer-wise payments.</p>
+                <div class="payment-summary">
+                    <div class="pay-stat">
+                        <span>Total Paid This Month</span>
+                        <strong>₹4,28,000</strong>
+                    </div>
+                    <div class="pay-stat">
+                        <span>Pending Payments</span>
+                        <strong style="color:#e67e22;">₹1,12,500</strong>
+                    </div>
+                    <div class="pay-stat">
+                        <span>Farmers Paid</span>
+                        <strong>84 / 92</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======== SCRIPTS ======== -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
