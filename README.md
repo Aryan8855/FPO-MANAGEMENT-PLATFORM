@@ -2,38 +2,15 @@
 
 > **One Dashboard. Complete FPO Operations. Transparent. Scalable.**
 
-[![Made with Love](https://img.shields.io/badge/Made%20with-❤️-red.svg)](https://github.com/your-username/fpo-management-platform)
-[![Hackathon](https://img.shields.io/badge/Hackathon-SKH009-blue.svg)](https://github.com/your-username/fpo-management-platform)
-[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
-[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
-[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-[![Chart.js](https://img.shields.io/badge/Chart.js-FF6384?style=flat&logo=chart.js&logoColor=white)](https://www.chartjs.org/)
-
 ---
 
 ## 📌 Table of Contents
 
-- [About the Project](#-about-the-project)
 - [Problem Statement](#-problem-statement)
 - [Solution](#-solution)
 - [Key Features](#-key-features)
-- [Workflow](#-workflow)
-- [Tech Stack](#-tech-stack)
-- [Screenshots](#-screenshots)
-- [Installation](#-installation)
-- [How to Run](#-how-to-run)
-- [Project Structure](#-project-structure)
-- [Future Scope](#-future-scope)
-- [Team](#-team)
-- [License](#-license)
-
----
-
-## 🎯 About the Project
-
-**AgriFlow** is a comprehensive **SAAS platform** designed to digitize the entire supply chain for **Farmer Producer Organizations (FPOs)**. It connects farmers, FPOs, buyers, and logistics providers on a single transparent platform.
-
-The platform replaces **manual, paper-based records** with a **real-time digital workflow**, ensuring transparency, efficiency, and fair payments for farmers.
+- [Libraries & Tools](#-libraries--tools)
+- [Development Tools](#-development-tools)
 
 ---
 
@@ -91,4 +68,25 @@ The platform replaces **manual, paper-based records** with a **real-time digital
 
 ---
 
-## 🔄 Workflow
+## 📚 Libraries & Tools
+
+| Tool | Purpose |
+|------|---------|
+| **Chart.js** | Interactive data visualizations and charts |
+| **Font Awesome** | Icons and visual elements |
+| **Google Fonts (Inter)** | Modern and clean typography |
+
+---
+
+## 🛠️ Development Tools
+
+| Tool | Purpose |
+|------|---------|
+| **VS Code** | Code editor |
+| **Live Server** | Local development server |
+| **Git** | Version control |
+| **GitHub Pages** | Hosting for demo |
+
+---
+
+**Made with ❤️ for the future of farming. 🌾**
